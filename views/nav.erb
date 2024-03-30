@@ -1,0 +1,15 @@
+<% if @page_name == "admin" || @page_name == "products" || @page_name == "orders" %>
+  <div class="admin-nav">
+    <a href="/">Home</a>
+    <a href="/admin">Dashboard</a>
+    <a href="/admin/products">Products</a>
+    <!--<a href="/admin/orders">Orders</a>-->
+  </div>
+<% else %>
+  <div id="nav">
+    <a href="/">
+      <img src="/img/choju2_0024_1.svg">
+      <p>Oshikatsu Ouen</p>
+    </a>
+  </div>
+<% end %>

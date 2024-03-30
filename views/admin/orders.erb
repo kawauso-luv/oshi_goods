@@ -1,0 +1,32 @@
+<div class="admin-orders">
+  <nav class="breadcrumb">
+    <ol>
+      <li><a href="/admin">Admin</a></li>
+      <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></li>
+      <li>Orders</li>
+    </ol>
+  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_items.each do |order_item| %>
+        <tr>
+          <td><%= order_item[:id] %></td>
+          <td><%= order_item[:name] %></td>
+          <td><%= order_item[:price] %></td>
+          <td><%= order_item[:stock] %></td>
+          <td><%= order_item[:created_at] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

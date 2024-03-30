@@ -1,0 +1,10 @@
+<div class="product-container">
+  <img src="<%= @item.image_url %>">
+  <div>
+      <p><%= @item.name %></p>
+      <p class="item-price"><%= @item.price %></p>
+      <p class="item-description"><%= @item.description %></p>
+      <form action="/cart/add/<%= @item.id %>" method="post"><input type="submit" value="カートに入れる"></input>
+      </form>
+  </div>
+</div>

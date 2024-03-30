@@ -1,0 +1,61 @@
+<div class="cart">
+  <h2>カート</h2>
+  <% if @cart.empty? %>
+    <p>まだカートに何も入ってないです</p>
+  <% else %>
+    <div class="table">
+      <div class="table-header">
+        <p>アイテム</p>
+        <div class="detail">
+          <p>数量</p>
+          <p>SubTotal</p>
+        </div>
+      </div>
+      <div class="cart-container">
+        <% @cart.each do |cart| %>
+          <div class="cart-item">
+            <!--商品について記述する部分-->
+            <div class="item-box">
+              <img src="<%= cart[:image_url] %>">
+              <div class="item-ex">
+                <p><%= cart[:name] %></p>
+                <p>¥<%= cart[:price_text] %></p>
+              </div>
+            </div>
+            <div class="item-detail">
+            <!--商品を何個購入するかの部分-->
+              <div class="item-count">
+                <div class="item-counter">
+                  <% id = cart[:id].to_s %>
+                  <button data-id="<%= id %>" class="minus">-</button>
+                  <p id="<%= cart[:id] %>Count"><%= session[:cart][id][:quantity] %></p>
+                  <button data-id="<%= id %>" class="plus">+</button>
+                </div>
+                <form action="/cart/delete/<%= id %>" method="post">
+                  <input type="submit" value="削除"></input>
+                </form>
+              </div>
+              <p id="<%= cart[:id] %>Price" class="item-total-price">¥<%= cart[:total_price] %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="table-footer">
+        <p>Total</p>
+        <p id="totalPrice"><%= @grand_total %></p>
+      </div>
+      <div class="item-note">
+        <p>
+          ※ ご注文完了後、配送先又はお支払い方法の変更はお受けできません。<br>
+          ※ お客様都合によるキャンセル・返品・変更はお受けできません。<br>
+          ※ お支払いは代金引き換えのみです。
+        </p>
+      </div>
+      <div class="order-btn">
+        <a href="/order">注文する</a>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="module" src="/js/count.js"></script>
